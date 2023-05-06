@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-05-05 00:10:57
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-05-06 01:05:48
+ * @LastEditTime: 2023-05-06 14:47:39
  * @FilePath: /Gauche-admin-template/src/views/login/components/LoginFrom.tsx
  */
 import React, { useState } from "react";
@@ -15,6 +15,8 @@ import md5 from "js-md5";
 import { loginApi } from "@/api/modules/login";
 import { connect } from "react-redux";
 import { setToken } from "@/redux/modules/global/action";
+import { setTabsList } from "@/redux/modules/tabs/action";
+import { HOME_URL } from "@/config/config";
 
 interface IProps {
 	children?: ReactNode;
@@ -30,9 +32,9 @@ const LoginForm: React.FC<IProps> = (props: any) => {
 			loginForm.password = md5(loginForm.password);
 			const { data } = await loginApi(loginForm);
 			setToken(data?.access_token);
-			// setTabsList([]);
+			setTabsList([]);
 			message.success("登录成功！");
-			navigate("/home/index");
+			navigate(HOME_URL);
 		} finally {
 			setLoading(false);
 		}

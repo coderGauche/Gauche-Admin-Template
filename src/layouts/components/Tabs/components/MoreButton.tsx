@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-12 23:36:38
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-05-06 01:20:25
+ * @LastEditTime: 2023-05-06 14:59:02
  * @FilePath: /Gauche-admin-template/src/layouts/components/Tabs/components/MoreButton.tsx
  */
 import { HOME_URL } from "@/config/config";
@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const MoreButton = (props: any) => {
 	const { pathname } = useLocation();
 	const navigate = useNavigate();
+
 	// close multipleTab
 	const closeMultipleTab = (tabPath?: string) => {
 		const handleTabsList = props.tabsList.filter((item: Menu.MenuOptions) => {
